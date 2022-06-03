@@ -1,25 +1,32 @@
 package com.trybe.acc.java.caixaeletronico;
 
+import static org.junit.Assert.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
+
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("Testes para a classe Banco")
 class BancoTest {
+  Banco objTeste = new Banco();
 
   @Test
   @DisplayName("1 - Testa o gerador de número único para nova conta.")
   void gerarNumeroNovaContaTest() {
-    Banco objTeste = new Banco();
     assertEquals(10, objTeste.gerarNumeroNovaConta().length());
   }
 
   @Test
   @DisplayName("2 - Testa o método adicionar pessoa cliente retorna o objeto pessoa cliente.")
   void adicionarPessoaClienteTest() {
-    fail("Não implementado");
+    PessoaCliente pessoaClienteMock;
+    ArrayList<PessoaCliente> arrTeste = objTeste.pessoasClientes;
+    PessoaCliente resposta = objTeste.adicionarPessoaCliente(pessoaClienteMock)
+    assertEquals(pessoaClienteMock, resposta);
+    assertNotSame(arrTeste, objTeste.pessoasClientes);
 
   }
 
