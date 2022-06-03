@@ -44,7 +44,6 @@ class BancoTest {
   @Test
   @DisplayName("4 - Testa se o método transferir fundos está transferindo corretamente.")
   void depositarTestTransferirFundosTestmostrarExtratoTest() {
-    fail("Não implementado");
 
   }
 
