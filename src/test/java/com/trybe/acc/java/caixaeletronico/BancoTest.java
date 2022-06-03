@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Test;
 @DisplayName("Testes para a classe Banco")
 class BancoTest {
   Banco objTeste = new Banco();
+  PessoaCliente pessoaClienteCadastradaMock = null;
+  PessoaCliente pessoaClienteNaoCadastradaMock = null;
 
   @Test
   @DisplayName("1 - Testa o gerador de número único para nova conta.")
@@ -22,18 +24,20 @@ class BancoTest {
   @Test
   @DisplayName("2 - Testa o método adicionar pessoa cliente retorna o objeto pessoa cliente.")
   void adicionarPessoaClienteTest() {
-    PessoaCliente pessoaClienteMock;
-    ArrayList<PessoaCliente> arrTeste = objTeste.pessoasClientes;
-    PessoaCliente resposta = objTeste.adicionarPessoaCliente(pessoaClienteMock)
+    PessoaCliente pessoaClienteMock = null;
+    ArrayList<PessoaCliente> arrTeste = objTeste.getPessoasClientes();
+    PessoaCliente resposta = objTeste.adicionarPessoaCliente(pessoaClienteMock);
     assertEquals(pessoaClienteMock, resposta);
-    assertNotSame(arrTeste, objTeste.pessoasClientes);
+    assertNotSame(arrTeste, objTeste.getPessoasClientes());
 
   }
 
   @Test
   @DisplayName("3 - Testa o método login da pessoa cliente retorna o objeto pessoa cliente corretamente.")
   void pessoaClienteLoginTest() {
-    fail("Não implementado");
+    assertEquals("Login inválido", objTeste.pessoaClienteLogin(pessoaClienteNaoCadastradaMock));
+    assertEquals(pessoaClienteCadastradaMock,
+        objTeste.pessoaClienteLogin(pessoaClienteCadastradaMock));
 
   }
 
